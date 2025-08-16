@@ -2,11 +2,14 @@
 
 ---
 
-# Auction MVP
+Mini Auction Platform
 
-**Auction MVP** is a modern, professional digital auction platform that connects buyers and sellers seamlessly. Users can explore live auctions, participate in bidding, and manage their assets efficiently. Sellers can create auctions with real-time countdowns and secure bidding features.
+A modern, professional digital auction platform that connects buyers and sellers seamlessly. Users can explore live auctions, participate in bidding, and manage their assets efficiently. Sellers can create auctions with real-time countdowns and secure bidding features.
 
 ---
+Live Site: https://mini-auction-1.onrender.com/
+[Demo Video Link](https://drive.google.com/file/d/1HiXsN0J4VPiqcHKJ1eoAbSaDmOmKtie-/view?usp=sharing)
+
 
 ## Features
 
@@ -21,31 +24,42 @@
 
 ## Tech Stack
 
-* **Frontend**: React.js / Vue.js
-* **Backend**: Node.js / Django
+* **Frontend**: React.js
+* **Backend**: Node.js 
 * **Real-Time Communication**: WebSockets
 * **Database & Auth**: Supabase (PostgreSQL)
 * **Caching**: Redis (Upstash)
 * **HTTP Client**: Axios
 * **UI Components**: ShadCN, Tailwind CSS, Framer Motion
-* **Deployment**: Vercel / Netlify for frontend, Supabase for backend
+
+
 
 ---
 
-## Demo
+## Usage
 
-Check out a quick demo of the platform:
-[Demo Video Link](https://your-demo-link.com)
+* **Landing Page**:
+  Explore featured auctions, navigate to login or register.
+
+* **Register / Login**:
+  Create an account as Buyer or Seller. Sellers gain access to auction creation.
+
+* **Create Auction** (Sellers only):
+  Fill out title, description, start price, bid increment, start and end time. Only logged-in sellers can create auctions.
+
+* **Active Auctions**:
+  View all live and upcoming auctions with real-time countdowns. Click on an auction to view details and place bids.
 
 ---
+
 
 ## Installation & Setup
 
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/auction-mvp.git
-   cd auction-mvp
+   git clone https://github.com/Niiihariiikaa/mini-auction.git
+   cd mini-auction
    ```
 
 2. **Install dependencies**
