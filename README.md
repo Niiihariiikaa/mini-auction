@@ -2,7 +2,7 @@
 
 ---
 
-##Mini Auction Platform
+## Mini Auction Platform
 
 A modern, professional digital auction platform that connects buyers and sellers seamlessly. Users can explore live auctions, participate in bidding, and manage their assets efficiently. Sellers can create auctions with real-time countdowns and secure bidding features.
 
