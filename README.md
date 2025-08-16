@@ -1,89 +1,113 @@
-Auction MVP is a modern, professional digital auction platform that connects buyers and sellers seamlessly. Users can explore live auctions, participate in bidding, and manage their assets efficiently. Sellers can create auctions with real-time countdowns and secure bidding features.
 
-Features
 
-User Authentication: Sign up as a Buyer or Seller and log in securely.
+---
 
-Auction Creation: Sellers can create auctions with title, description, starting price, bid increment, and start/end times.
+# Auction MVP
 
-Live Auctions: Buyers can view ongoing and upcoming auctions with real-time countdowns.
+**Auction MVP** is a modern, professional digital auction platform that connects buyers and sellers seamlessly. Users can explore live auctions, participate in bidding, and manage their assets efficiently. Sellers can create auctions with real-time countdowns and secure bidding features.
 
-Role-based Access: Only logged-in sellers can create auctions.
+---
 
-Responsive UI: Fully responsive landing page, auction list, and forms.
+## Features
 
-Dark Themed Interface: Professional dark UI with smooth animations.
+* **User Authentication**: Sign up as a Buyer or Seller and log in securely.
+* **Auction Creation**: Sellers can create auctions with title, description, starting price, bid increment, and start/end times.
+* **Live Auctions**: Buyers can view ongoing and upcoming auctions with real-time countdowns.
+* **Role-based Access**: Only logged-in sellers can create auctions.
+* **Responsive UI**: Fully responsive landing page, auction list, and forms.
+* **Dark Themed Interface**: Professional dark UI with smooth animations.
 
-Tech Stack
+---
 
-Frontend: React.js / Vue.js
+## Tech Stack
 
-Backend: Node.js / Django
+* **Frontend**: React.js / Vue.js
+* **Backend**: Node.js / Django
+* **Real-Time Communication**: WebSockets
+* **Database & Auth**: Supabase (PostgreSQL)
+* **Caching**: Redis (Upstash)
+* **HTTP Client**: Axios
+* **UI Components**: ShadCN, Tailwind CSS, Framer Motion
+* **Deployment**: Vercel / Netlify for frontend, Supabase for backend
 
-Real-Time Communication: WebSockets
+---
 
-Database & Auth: Supabase (PostgreSQL)
-
-Caching: Redis (Upstash)
-
-HTTP Client: Axios
-
-UI Components: ShadCN, Tailwind CSS, Framer Motion
-
-Deployment: Vercel / Netlify for frontend, Supabase for backend
-
-Demo
+## Demo
 
 Check out a quick demo of the platform:
-Demo Video Link
+[Demo Video Link](https://your-demo-link.com)
 
-Installation & Setup
+---
 
-Clone the repository
+## Installation & Setup
 
-git clone https://github.com/your-username/auction-mvp.git
-cd auction-mvp
+1. **Clone the repository**
 
+   ```bash
+   git clone https://github.com/your-username/auction-mvp.git
+   cd auction-mvp
+   ```
 
-Install dependencies
+2. **Install dependencies**
 
-npm install
+   ```bash
+   npm install
+   ```
 
+3. **Configure environment variables**
 
-Configure environment variables
+   Create a `.env` file in the root with Supabase credentials:
 
-Create a .env file in the root with Supabase credentials:
+   ```env
+   VITE_SUPABASE_URL=your-supabase-url
+   VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+   ```
 
-VITE_SUPABASE_URL=your-supabase-url
-VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+4. **Run the application**
 
+   ```bash
+   npm run dev
+   ```
 
-Run the application
+5. **Access in browser**
 
-npm run dev
+   ```
+   http://localhost:5173
+   ```
 
+---
 
-Access in browser
+## Usage
 
-http://localhost:5173
+* **Landing Page**:
+  Explore featured auctions, navigate to login or register.
 
-Usage
+* **Register / Login**:
+  Create an account as Buyer or Seller. Sellers gain access to auction creation.
 
-Landing Page:
-Explore featured auctions, navigate to login or register.
+* **Create Auction** (Sellers only):
+  Fill out title, description, start price, bid increment, start and end time. Only logged-in sellers can create auctions.
 
-Register / Login:
-Create an account as Buyer or Seller. Sellers gain access to auction creation.
+* **Active Auctions**:
+  View all live and upcoming auctions with real-time countdowns. Click on an auction to view details and place bids.
 
-Create Auction (Sellers only):
-Fill out title, description, start price, bid increment, start and end time. Only logged-in sellers can create auctions.
+---
 
-Active Auctions:
-View all live and upcoming auctions with real-time countdowns. Click on an auction to view details and place bids.
+## Folder Structure
 
+```
+src/
+├─ components/      # UI Components (Cards, Buttons, Inputs, etc.)
+├─ lib/             # Supabase & API configuration
+├─ pages/           # Landing page, Login, Register, Auctions
+├─ App.jsx          # Main application
+├─ main.jsx         # Entry point
+```
 
-Notes
+---
 
-Ensure users are logged in before attempting to create auctions; non-authenticated users are redirected to login.
+## Notes
 
-Countdown timers update every second for live auctions.
+* Ensure users are logged in before attempting to create auctions; non-authenticated users are redirected to login.
+* Countdown timers update every second for live auctions.
+
