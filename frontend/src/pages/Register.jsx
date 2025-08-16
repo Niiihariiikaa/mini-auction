@@ -67,7 +67,7 @@ export default function Register() {
             className="bg-gray-800 text-white placeholder-gray-400 border-gray-700 focus:ring-indigo-400"
           />
 
-          {/* Role Dropdown */}
+          
           <select
             value={role}
             onChange={e => setRole(e.target.value)}

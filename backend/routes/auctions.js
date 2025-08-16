@@ -1,4 +1,4 @@
-// src/routes/auctions.js
+
 import express from 'express';
 import { Auction, User } from '../models/index.js';
 import requireUser from '../middleware/supabaseAuth.js';
@@ -6,7 +6,7 @@ import { getHighestBid } from '../services/auctionService.js';
 
 const router = express.Router();
 
-// create auction (seller only)
+
 router.post('/', requireUser, async (req, res) => {
   try {
     const supaId = req.user.id;
@@ -21,13 +21,13 @@ router.post('/', requireUser, async (req, res) => {
   } catch (e) { console.error(e); res.status(500).json({ error: e.message }); }
 });
 
-// list auctions (public)
+
 router.get('/', async (req, res) => {
   const list = await Auction.findAll({ include: [{ model: User, as: 'seller', attributes: ['id','name'] }], order: [['created_at','DESC']] });
   res.json(list);
 });
 
-// get single auction + current highest
+
 router.get('/:id', async (req, res) => {
   const id = req.params.id;
   const auction = await Auction.findByPk(id, { include: [{ model: User, as: 'seller', attributes: ['id','name'] }] });

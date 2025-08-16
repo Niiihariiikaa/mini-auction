@@ -1,4 +1,4 @@
-// src/index.js
+
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
@@ -28,10 +28,8 @@ app.use('/auctions', auctionsRoutes);
 app.use('/bids', bidsRoutes);
 app.use('/notifications', notificationsRoutes);
 
-// health
 app.get('/health', (_req, res) => res.json({ ok: true }));
 
-// sockets: join rooms per auction
 io.on('connection', (socket) => {
   console.log('🔌 socket connected', socket.id);
   socket.on('join_auction', (auctionId) => {
@@ -49,7 +47,7 @@ server.listen(PORT, async () => {
     await sequelize.authenticate();
     console.log('✅ DB connected');
   } catch (e) {
-    console.error('❌ DB connect error', e.message);
+    console.error('DB connect error', e.message);
   }
-  console.log("🚀 Server listening on ${PORT}");
+  console.log("Server listening on ${PORT}");
 });

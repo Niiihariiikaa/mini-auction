@@ -1,4 +1,4 @@
-// src/routes/bids.js
+
 import express from 'express';
 import { Auction, Bid, User } from '../models/index.js';
 import requireUser from '../middleware/supabaseAuth.js';
@@ -6,7 +6,7 @@ import { getHighestBid, setHighestBid } from '../services/auctionService.js';
 
 const router = express.Router();
 
-// place bid (buyer only)
+
 router.post('/', requireUser, async (req, res) => {
   try {
     const me = await User.findByPk(req.user.id);
@@ -26,16 +26,15 @@ router.post('/', requireUser, async (req, res) => {
 
     if (parseFloat(amount) < min) return res.status(400).json({ error:` Bid too low. Minimum ${min}` });
 
-    // Save bid
+  
     const bid = await Bid.create({ auction_id: auction.id, user_id: me.id, amount });
 
-    // Update Redis + auction snapshot
     await setHighestBid(auction.id, amount);
     auction.highest_bid_id = bid.id;
     auction.highest_bid_amount = amount;
     await auction.save();
 
-    // Broadcast real-time update & simple in-app notifications via socket
+
     req.io.to(`auction_${auction.id}`).emit('new_bid', { auction_id: auction.id, amount: parseFloat(amount), user_id: me.id });
     req.io.to(`auction_${auction.id}`).emit('notify', { type: 'bid', message: `New bid ${amount} on "${auction.title}"` });
 
