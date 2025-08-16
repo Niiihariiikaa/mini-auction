@@ -24,7 +24,7 @@ router.post('/', requireUser, async (req, res) => {
     const current = (await getHighestBid(auction.id)) ?? (auction.highest_bid_amount ? parseFloat(auction.highest_bid_amount) : parseFloat(auction.start_price));
     const min = current + parseFloat(auction.bid_increment);
 
-    if (parseFloat(amount) < min) return res.status(400).json({ error: `Bid too low. Minimum ${min}` });
+    if (parseFloat(amount) < min) return res.status(400).json({ error:` Bid too low. Minimum ${min}` });
 
     // Save bid
     const bid = await Bid.create({ auction_id: auction.id, user_id: me.id, amount });
@@ -37,7 +37,7 @@ router.post('/', requireUser, async (req, res) => {
 
     // Broadcast real-time update & simple in-app notifications via socket
     req.io.to(`auction_${auction.id}`).emit('new_bid', { auction_id: auction.id, amount: parseFloat(amount), user_id: me.id });
-    req.io.to(`auction_${auction.id}`).emit('notify', { type: 'bid', message: `New bid ${amount} on "${auction.title}` });
+    req.io.to(`auction_${auction.id}`).emit('notify', { type: 'bid', message: `New bid ${amount} on "${auction.title}"` });
 
     res.json(bid);
   } catch (e) { console.error(e); res.status(500).json({ error: e.message }); }
