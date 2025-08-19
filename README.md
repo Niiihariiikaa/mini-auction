@@ -1,91 +1,118 @@
 
+# Mini Auction Platform
+
+A full-stack **real-time online auction platform** that enables sellers to list items for auction and buyers to place live bids. The platform provides countdown timers, featured auctions, and instant updates using WebSockets.
 
 ---
 
-## Mini Auction Platform
 
-A modern, professional digital auction platform that connects buyers and sellers seamlessly. Users can explore live auctions, participate in bidding, and manage their assets efficiently. Sellers can create auctions with real-time countdowns and secure bidding features.
+## Demo
+
+* **Live Site:** \[Deployed Link Here]
+* **Demo Video:** \[Video Link Here]
 
 ---
-Live Site: https://mini-auction-1.onrender.com/
-
-
-[Demo Video Link](https://drive.google.com/file/d/1HiXsN0J4VPiqcHKJ1eoAbSaDmOmKtie-/view?usp=sharing)
-
 
 ## Features
 
-* **User Authentication**: Sign up as a Buyer or Seller and log in securely.
-* **Auction Creation**: Sellers can create auctions with title, description, starting price, bid increment, and start/end times.
-* **Live Auctions**: Buyers can view ongoing and upcoming auctions with real-time countdowns.
-* **Role-based Access**: Only logged-in sellers can create auctions.
-* **Responsive UI**: Fully responsive landing page, auction list, and forms.
-* **Dark Themed Interface**: Professional dark UI with smooth animations.
+* User authentication (Supabase)
+* Role-based access (Buyer / Seller)
+* Create, start, and end auctions (Seller only)
+* Place live bids with real-time updates (Buyer only)
+* Responsive, modern UI with Tailwind CSS & shadcn/ui
+* Live WebSocket integration for instant bid updates
 
 ---
 
 ## Tech Stack
 
-* **Frontend**: React.js
-* **Backend**: Node.js 
-* **Real-Time Communication**: WebSockets
-* **Database & Auth**: Supabase (PostgreSQL)
-* **Caching**: Redis (Upstash)
-* **HTTP Client**: Axios
-* **UI Components**: ShadCN, Tailwind CSS, Framer Motion
-
-
+* **Frontend:** React.js / Vue.js (React implementation in this repo)
+* **Backend:** Node.js / Django (Node.js implementation in this repo)
+* **Real-Time Communication:** WebSockets
+* **Database:** Supabase (PostgreSQL)
+* **Redis:** Upstash (for caching and sessions)
+* **Styling:** Tailwind CSS + shadcn/ui
 
 ---
 
-## Usage
+## Project Structure
 
-* **Landing Page**:
-  Explore featured auctions, navigate to login or register.
-
-* **Register / Login**:
-  Create an account as Buyer or Seller. Sellers gain access to auction creation.
-
-* **Create Auction** (Sellers only):
-  Fill out title, description, start price, bid increment, start and end time. Only logged-in sellers can create auctions.
-
-* **Active Auctions**:
-  View all live and upcoming auctions with real-time countdowns. Click on an auction to view details and place bids.
+```
+auction-mvp/
+│── backend/             # Node.js backend with REST API & WebSockets
+│   ├── routes/          # API route handlers
+│   ├── models/          # Database models
+│   ├── server.js        # Entry point
+│
+│── frontend/            # React.js frontend
+│   ├── src/
+│   │   ├── pages/       # Login, Register, Auctions, Landing Page
+│   │   ├── components/  # UI components
+│   │   ├── lib/         # API & Supabase client
+│   │   └── App.jsx
+│
+│── README.md
+│── package.json
+```
 
 ---
 
+## API Endpoints
 
-## Installation & Setup
+### Auctions
 
-1. **Clone the repository**
+| Method | Endpoint              | Description                      |
+| ------ | --------------------- | -------------------------------- |
+| GET    | `/auctions`           | List all auctions                |
+| POST   | `/auctions`           | Create auction (seller only)     |
+| GET    | `/auctions/:id`       | Get single auction + current bid |
+| POST   | `/auctions/:id/start` | Start auction (seller only)      |
+| POST   | `/auctions/:id/end`   | End auction (seller only)        |
+
+### Bids
+
+| Method | Endpoint | Description            |
+| ------ | -------- | ---------------------- |
+| POST   | `/bids`  | Place bid (buyer only) |
+
+---
+
+## Installation
+
+### Prerequisites
+
+* Node.js >= 18
+* Supabase project setup
+* Redis (Upstash) setup
+
+### Steps
+
+1. **Clone repository**
 
    ```bash
-   git clone https://github.com/Niiihariiikaa/mini-auction.git
-   cd mini-auction
+   git clone https://github.com/your-username/auction-mvp.git
+   cd auction-mvp
    ```
 
-2. **Install dependencies**
+2. **Setup backend**
 
    ```bash
+   cd backend
    npm install
+   cp .env.example .env
+   # Add Supabase & Redis credentials in .env
+   npm start
    ```
 
-3. **Configure environment variables**
-
-   Create a `.env` file in the root with Supabase credentials:
-
-   ```env
-   VITE_SUPABASE_URL=your-supabase-url
-   VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
-   ```
-
-4. **Run the application**
+3. **Setup frontend**
 
    ```bash
+   cd frontend
+   npm install
    npm run dev
    ```
 
-5. **Access in browser**
+4. Visit app at:
 
    ```
    http://localhost:5173
@@ -95,35 +122,21 @@ Live Site: https://mini-auction-1.onrender.com/
 
 ## Usage
 
-* **Landing Page**:
-  Explore featured auctions, navigate to login or register.
+* **Register/Login** as buyer or seller
+* **Seller:** Create auction → Start auction → End auction
+* **Buyer:** View auctions → Place bids in real-time
+* Featured auctions are displayed on the landing page
 
-* **Register / Login**:
-  Create an account as Buyer or Seller. Sellers gain access to auction creation.
 
-* **Create Auction** (Sellers only):
-  Fill out title, description, start price, bid increment, start and end time. Only logged-in sellers can create auctions.
 
-* **Active Auctions**:
-  View all live and upcoming auctions with real-time countdowns. Click on an auction to view details and place bids.
+## Future Improvements
 
----
-
-## Folder Structure
-
-```
-src/
-├─ components/      # UI Components (Cards, Buttons, Inputs, etc.)
-├─ lib/             # Supabase & API configuration
-├─ pages/           # Landing page, Login, Register, Auctions
-├─ App.jsx          # Main application
-├─ main.jsx         # Entry point
-```
+* Payment gateway integration
+* Notifications (Email/SMS) for bids
+* Analytics for sellers (bidding trends, revenue reports)
+* AI-based price predictions
 
 ---
 
-## Notes
 
-* Ensure users are logged in before attempting to create auctions; non-authenticated users are redirected to login.
-* Countdown timers update every second for live auctions.
 
