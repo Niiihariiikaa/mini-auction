@@ -8,8 +8,8 @@ A full-stack **real-time online auction platform** that enables sellers to list 
 
 ## Demo
 
-* **Live Site:** \[Deployed Link Here]
-* **Demo Video:** \[Video Link Here]
+* **Live Site:** \[https://mini-auction-1.onrender.com/]
+* **Demo Video:** \[(https://drive.google.com/file/d/1HiXsN0J4VPiqcHKJ1eoAbSaDmOmKtie-/view?usp=sharing)]
 
 ---
 
@@ -90,7 +90,7 @@ auction-mvp/
 1. **Clone repository**
 
    ```bash
-   git clone https://github.com/your-username/auction-mvp.git
+   git clone https://github.com/Niiihariiikaa/mini-auction
    cd auction-mvp
    ```
 
