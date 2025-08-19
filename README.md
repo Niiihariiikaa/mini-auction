@@ -8,8 +8,9 @@ A full-stack **real-time online auction platform** that enables sellers to list 
 
 ## Demo
 
-* **Live Site:** \[https://mini-auction-1.onrender.com/]
-* **Demo Video:** \[(https://drive.google.com/file/d/1HiXsN0J4VPiqcHKJ1eoAbSaDmOmKtie-/view?usp=sharing)]
+- [Live Site](https://mini-auction-1.onrender.com/)
+- [Demo Video](https://drive.google.com/file/d/1HiXsN0J4VPiqcHKJ1eoAbSaDmOmKtie-/view?usp=sharing)
+
 
 ---
 
